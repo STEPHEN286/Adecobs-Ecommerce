@@ -1,0 +1,10 @@
+.no-hover {
+  background-color: blue !important;
+  color: white !important;
+  border: none !important;
+  transition: none !important;
+}
+
+.no-hover:hover {
+  background-color: blue !important; /* No hover change */
+}
