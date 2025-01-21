@@ -1,6 +1,7 @@
 import React from "react";
 import ProductCard from "./Card";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
+
 import { useFetch } from "../../../hooks/useFetch";
 
 export default function CategoryProducts() {

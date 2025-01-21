@@ -55,7 +55,6 @@ export default function Header() {
   return (
     <div className="bg-white border-b">
       {/* Mobile menu */}
-
       {isDrawerOpen && <MobileMenu open={isDrawerOpen} />}
 
       <header className="relative bg-white">
@@ -91,7 +90,7 @@ export default function Header() {
 
                 <div className="ml-4 hidden md:flex items-center    space-x-3 lg:ml-0 ">
                   <div className="text-sm px-5 py-2.5 text-center inline-flex items-center">
-                    <Link href="#">
+                    <Link href="/">
                       <h1 className="">Home</h1>
                     </Link>
                   </div>

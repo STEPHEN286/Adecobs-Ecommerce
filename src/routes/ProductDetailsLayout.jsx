@@ -14,7 +14,7 @@ export default function ProductDetailsLayout() {
   if (error) {
     return <div>Error loading product details</div>;
   }
-  console.log("products =>", product);
+  // console.log("products =>", product);
 
   return (
   <div><ProductDetails product={product} />

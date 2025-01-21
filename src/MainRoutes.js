@@ -5,15 +5,9 @@ import ProductDetailsLayout from "./routes/ProductDetailsLayout";
 import CategoryLayout from "./routes/ProductRootPage";
 import RootLayout from "./routes/RootLayout";
 import PersonalDetails from "./components/user-settings/PersonalDetails.jsx";
+import { createBrowserRouter } from "react-router-dom";
 
-const { createBrowserRouter } = require("react-router");
-console.log({
-  Home,
-  CartLayout,
-  ProductDetailsLayout,
-  CategoryLayout,
-  RootLayout,
-});
+
 
 const router = createBrowserRouter([
   {
@@ -26,7 +20,6 @@ const router = createBrowserRouter([
       { path: "cart", element: <CartLayout /> },
       {
         path: "product-details/:productId",
-        // index: true,
         element: <ProductDetailsLayout />,
       },
 

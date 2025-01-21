@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useFetch } from "../../../hooks/useFetch";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 import ColoredIcon from "../../icon/ImageToIcon";
 
@@ -14,20 +14,25 @@ export default function DropdownComponent() {
   const handleMouseLeave = () => {
     setIsDropdownVisible(false);
   };
-  // const handleMouseLeave = () => setIsOpen(false);
+
 
   const { data: categories } = useFetch("categories");
   const navigate = useNavigate();
 
   const navigateToCategory = (url) => {
+    setIsDropdownVisible(false);
     navigate(url);
+    // console.log(url);
+    // console.log(categories);
+    
+    
   };
 
   return (
     <div className="relative inline-block text-left">
       <button
-        // id="dropdownHoverButton"
-        className="text-current p-2 hover:bg-gray-100 cursor-pointer   focus:outline-none  font-normal rounded-lg text-sm  text-center inline-flex items-center"
+
+        className="text-current   p-2 hover:bg-gray-100 cursor-pointer   focus:outline-none  font-normal rounded-lg text-sm  text-center inline-flex items-center"
         type="button"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -51,20 +56,25 @@ export default function DropdownComponent() {
       </button>
       {isDropdownVisible && (
         <div
-          className="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+          className="absolute z-10  w-56   bg-white divide-y divide-gray-100 rounded-lg shadow  dark:bg-gray-700"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <ul className="py-2 text-sm text-gray-700 ">
-            { categories?.map((item) => {
+          <ul className="py-2  text-sm text-gray-700 ">
+            { categories?.map((category) => {
+              const { id:categoryId, name, iconUrl } = category;
+
+              
+              
               return (
-                <li className=" cursor-pointer w-full">
+                <li className=" cursor-pointer ">
+                  {/* <Link to={`category/${categoryId}`} >{name}</Link> */}
                   <span
-                    onClick={() => navigateToCategory(item.url)}
-                    className=" px-4 py-2 w-full flex gap-1.5 items-center hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    onClick={() => navigateToCategory(`category/${categoryId}`)}
+                    className=" px-4 py-2   flex gap-1.5 items-center hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
-                    <ColoredIcon dataUrl={item.iconUrl} />
-                    <span> {item.name}</span>
+                    <ColoredIcon dataUrl={iconUrl} />
+                    <span className="w-full"> {name}  </span>
                   </span>
                 </li>
               );

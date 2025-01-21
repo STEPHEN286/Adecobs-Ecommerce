@@ -3,8 +3,12 @@ import React from "react";
 import CategoryProducts from "../components/Ui/card/CategoryProducts";
 import { useFetch } from "../hooks/useFetch";
 import { CarouselComponent } from "../components/carousel/Carousel";
+
+
 function CategoryLayout() {
   const { data: billboards, isLoading, error } = useFetch("billboards");
+
+  
   return (
     <>
       <div className="">
