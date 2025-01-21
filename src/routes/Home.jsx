@@ -13,7 +13,7 @@ export default function Home() {
 
   if (isLoading) return <SkeletonLoader />;
   if (error) {
-    return <div>Error loading products: {error.message}</div>;
+    return <div> {error.message}</div>;
   }
   return (
     <div className="space-y-4 w-full  ">

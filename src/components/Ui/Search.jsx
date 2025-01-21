@@ -28,13 +28,15 @@ export default function Search() {
           </svg>
         </div>
         <input
+        disabled
           type="search"
           id="default-search"
           className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50   dark:bg-gray-700  focus:ring-cta-ctaBorder focus:border-transparent focus:ring-1 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
           placeholder="what are you looking for?"
-          required
+    
         />
         <button
+        disabled
           type="submit"
           class="text-white absolute end-2.5 bottom-2.5 bg-cta-button hover:bg-cta-hover focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >

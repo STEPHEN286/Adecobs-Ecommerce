@@ -56,7 +56,7 @@ export default function DropdownComponent() {
           onMouseLeave={handleMouseLeave}
         >
           <ul className="py-2 text-sm text-gray-700 ">
-            {categories.map((item) => {
+            { categories?.map((item) => {
               return (
                 <li className=" cursor-pointer w-full">
                   <span

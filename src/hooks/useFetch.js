@@ -1,10 +1,16 @@
-import { apiBaseUrl } from "../utils/constants";
+
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { apiBaseUrl } from "../utils/constants";
 
-// Fetch Function
+
 const fetchData = async (endpoint) => {
   try {
+
+
+
+    console.log(`${apiBaseUrl}`);
+
     const response = await axios.get(`${apiBaseUrl}/${endpoint}`);
     return response.data;
   } catch (error) {
@@ -25,7 +31,9 @@ export function useFetch(endpoint = "") {
   });
 
   
-  const { data, error, isLoading } = query;
-
+  const { data, error, isLoading , isError } = query;
+  if (isError) {
+    console.error("Error fetching data:", error);
+  }
   return { data, error, isLoading }; 
 }
