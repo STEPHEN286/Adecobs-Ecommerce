@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function ProductImages({ images }) {
+export default function ProductImages({ images, description }) {
   const [activeImageId, setActiveImageId] = useState(0);
 
   const handleClick = (index) => {
@@ -8,27 +8,31 @@ export default function ProductImages({ images }) {
   };
 
   return (
-    <div>
-      <div className="flex flex-col">
-        <div className="mb-4">
-          <img
-            src={images[activeImageId]?.url}
-            alt="Havic HV G-92 Gamepad"
-            className="w-full rounded-lg"
-          />
-        </div>
-        <div className="flex gap-4">
-          {images.map((image, index) => (
+    
+      <div className="h-full  flex flex-col overflow-y-hidden">
+       
+          <div className="mb-4 max-h-52 max-w-full md:max-h-[467px]  hidden md:block">
             <img
-              src={image.url}
-              key={index}
-              alt="Thumbnail 1"
-              className="w-20 h-20 rounded-lg border cursor-pointer"
-              onClick={() => handleClick(index)}
+              src={images[activeImageId]?.url}
+              alt="Havic HV G-92 Gamepad"
+              className=" w-full overflow-hidden flex justify-center items-center max-h-full max-w-full  object-contain rounded-lg"
             />
-          ))}
-        </div>
+          </div>
+          <div className="flex gap-4 ">
+            {images.map((image, index) => (
+              <img
+                src={image.url}
+                key={index}
+                alt="Thumbnail 1"
+                className="md:w-20 md:h-20 h-72  w-72 rounded-lg border cursor-pointer"
+                onClick={() => handleClick(index)}
+              />
+            ))}
+          </div>
+      
+
+       
       </div>
-    </div>
+   
   );
 }

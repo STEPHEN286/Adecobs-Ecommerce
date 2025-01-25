@@ -1,5 +1,5 @@
 "use client";
-import logo from "../../asset/images/Asset 2@3x.png";
+
 import {
   Bars3Icon,
   HeartIcon,
@@ -18,6 +18,11 @@ import { ModalComponent } from "../Ui/modal/Modal";
 import AuthLayout from "../auth/AuthLayout";
 import DropdownComponent from "../Ui/dropdown/Dropdown";
 import { ProfileDropdown } from "../Ui/dropdown/ProfileDropdown";
+import Logo from "./Logo";
+import HeaderLinks from "./HeaderLinks";
+import ProfileIcon from "../icon/ProfileIcon";
+import { Button } from "flowbite-react";
+import SearchOnMobile from "./SearchOnMobile";
 
 // const navigation = {
 //   categories: [],
@@ -33,16 +38,14 @@ export default function Header() {
 
   const dispatch = useDispatch();
 
-  const cartItems = useSelector((state) => state.cart.cartItems);
+ 
 
   const modalType = useSelector((state) => state.userProgress.modalType);
   const isCreated = useSelector((state) => state.user.isCreated);
   const isDrawerOpen = useSelector((state) => state.userProgress.showDrawer);
   // console.log("cart", modal);
 
-  const handdleShowSearchModal = () => {
-    dispatch(userProgressAction.setShowModal());
-  };
+
   const handdleShowDrawer = () => {
     dispatch(userProgressAction.setShowDrawer());
   };
@@ -53,11 +56,11 @@ export default function Header() {
   };
 
   return (
-    <div className="bg-white border-b">
+    <div className="bg-white mb-4 border-b">
       {/* Mobile menu */}
       {isDrawerOpen && <MobileMenu open={isDrawerOpen} />}
 
-      <header className="relative bg-white">
+      <header className="relative bg-white " >
         <p className="flex h-10 items-center justify-center bg-black px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
           Info
         </p>
@@ -65,7 +68,7 @@ export default function Header() {
         <div className="border-bborder-gray-200">
           <nav
             aria-label="Top"
-            className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+            className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8  "
           >
             <div className=" border-gray-200">
               <div className="flex justify-between space-x-3 h-16 items-center ">
@@ -79,14 +82,7 @@ export default function Header() {
                   <Bars3Icon aria-hidden="true" className="size-6" />
                 </button>
 
-                {/* Logo */}
-                <div className="ml-4 flex  lg:ml-0 ">
-                  <Link href="/">
-                    {/* <span className="sr-only">Your Company</span> */}
-                    {/* <h1 className="font-bold">Adecobs</h1> */}
-                    <img src={logo} alt="adecobs" className="h-8 md:h-12" />
-                  </Link>
-                </div>
+               <Logo />
 
                 <div className="ml-4 hidden md:flex items-center    space-x-3 lg:ml-0 ">
                   <div className="text-sm px-5 py-2.5 text-center inline-flex items-center">
@@ -108,12 +104,15 @@ export default function Header() {
                  {
                       !isCreated && (
                         <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                        <span
+                        <button
+                        disabled
                           onClick={handdleShowAuthModal}
-                          className="text-sm font-medium text-gray-700 hover:text-gray-800"
+                          title="Profile feature is under development"
+
+                          className="text-sm font-medium text-gray-400 group-hover:text-gray-500"
                         >
-                          Sign in
-                        </span>
+                          <ProfileIcon />
+                        </button>
                         {/* <span aria-hidden="true" className="h-6 w-px bg-gray-200" /> */}
                       </div>
                       )
@@ -129,51 +128,12 @@ export default function Header() {
                  }
 
                   {/* Search */}
-                  <div className="flex  lg:hidden lg:ml-6 ">
-                    <span
-                      onClick={handdleShowSearchModal}
-                      className="p-2 text-gray-400 hover:text-gray-500"
-                    >
-                      <span className="sr-only">Search</span>
-                      <MagnifyingGlassIcon
-                        aria-hidden="true"
-                        className="size-6"
-                      />
-                    </span>
-                  </div>
+                  <SearchOnMobile />
 
                   {/* Cart */}
 
-                  <div className="ml-4 flow-root lg:ml-6">
-                    <Link
-                      to="cart"
-                      className="group -m-2 flex items-center p-2"
-                    >
-                      <HeartIcon
-                        aria-hidden="true"
-                        className="size-6 shrink-0 text-gray-400 group-hover:text-gray-500"
-                      />
-                      <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                        {cartItems?.length}
-                      </span>
-                      <span className="sr-only">items in cart, view bag</span>
-                    </Link>
-                  </div>
-                  <div className="ml-4 flow-root lg:ml-6">
-                    <Link
-                      to="cart"
-                      className="group -m-2 flex items-center p-2"
-                    >
-                      <ShoppingBagIcon
-                        aria-hidden="true"
-                        className="size-6 shrink-0 text-gray-400 group-hover:text-gray-500"
-                      />
-                      <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                        {cartItems?.length}
-                      </span>
-                      <span className="sr-only">items in cart, view bag</span>
-                    </Link>
-                  </div>
+                 <HeaderLinks />
+                  
                 </div>
               </div>
             </div>
@@ -182,7 +142,7 @@ export default function Header() {
       </header>
       <ModalComponent>
         {modalType === "authModal" && <AuthLayout />}
-        {modalType === "search" && <Search />}
+       
       </ModalComponent>
     </div>
   );

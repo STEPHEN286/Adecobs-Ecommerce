@@ -5,7 +5,7 @@ import { ShareIcon } from "@heroicons/react/24/outline";
 
 const ProductDetails = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
-  const [showDetails, setShowDetails] = useState(false);
+  // const [showDetails, setShowDetails] = useState(false);
   const { name, price, description, images, color, size } = product;
 
   const handleIncrease = () => setQuantity(quantity + 1);
@@ -13,16 +13,16 @@ const ProductDetails = ({ product }) => {
     if (quantity > 1) setQuantity(quantity - 1);
   };
 
-  const toggleDetails = () => setShowDetails((prev) => !prev);
+  // const toggleDetails = () => setShowDetails((prev) => !prev);
 
   return (
-    <div className="max-w-7xl mx-auto p-4">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div className="max-w-7xl  mx-auto p-6 bg-white">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full">
         {/* Image Gallery */}
-        <ProductImages images={images} />
-
+        <ProductImages images={images} description={description} />
+ 
         {/* Product Info */}
-        <div className="space-y-4">
+        <div className="  space-y-8 ">
           <h1 className="text-2xl font-bold">{name}</h1>
           <div className="flex items-center gap-2">
             <span className="text-yellow-500">★★★★☆</span>
@@ -32,14 +32,7 @@ const ProductDetails = ({ product }) => {
           <p className="text-2xl font-semibold text-gray-800">${price}</p>
 
           {/* Product Description with Details Toggle */}
-          <details className="mt-2">
-            <summary className=" ">
-              Product Description
-            </summary>
-            <p className="text-gray-600 mt-2">
-              <pre className="text-wrap">{description}</pre>
-            </p>
-          </details>
+         
 
           {color && color.value !== "N/A" && (
             <div className="flex items-center gap-4">

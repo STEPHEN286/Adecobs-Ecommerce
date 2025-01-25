@@ -19,7 +19,7 @@ export default function FeaturedProducts() {
     (product) => product.isFeatured === true
   );
   return (
-    <div className="flex flex-col flex-wrap p-2   md:space-y-3 md:p-4   border-b">
+    <div className="flex flex-col flex-wrap p-2  bg-white  md:space-y-3 md:p-4   border-b">
       <h2 className="text-md text">Featured Product</h2>
       <div className="flex w-full overflow-x-auto space-x-4 py-4 snap-normal scrollbar-hide">
         {featuredProducts.map((product) => (

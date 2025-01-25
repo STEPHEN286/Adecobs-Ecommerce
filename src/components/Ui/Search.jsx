@@ -29,6 +29,8 @@ export default function Search() {
         </div>
         <input
         disabled
+        title="Search feature is under development"
+
           type="search"
           id="default-search"
           className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50   dark:bg-gray-700  focus:ring-cta-ctaBorder focus:border-transparent focus:ring-1 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "

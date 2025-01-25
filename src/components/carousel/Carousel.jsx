@@ -5,7 +5,7 @@ import { customTheme } from "./carouselTheme";
 
 export function CarouselComponent({ billboards }) {
   return (
-    <div className="h-56  md:h-[450px] xl:h-[600px] 2xl:h-96">
+    <div className="h-56  md:h-[400px] xl:h-[400px] 2xl:h-96">
       <Carousel theme={customTheme} className="rounded-none">
         {billboards &&
           billboards.map((billboard) => (

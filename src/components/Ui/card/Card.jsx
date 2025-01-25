@@ -6,13 +6,14 @@ import { cartActions } from "../../../store/cartSlice";
 import { useNavigate } from "react-router";
 import { currencyFormatter } from "../../../utils/currencyFormatter";
 import { EyeIcon, PlusCircleIcon } from "@heroicons/react/24/outline";
+import { toast, Toaster } from "sonner";
 
 function ProductCard({ product }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [isLiked, setIsLiked] = useState(false);
-  const [isAddedToCart, setIsAddedToCart] = useState(false);
+  
 
   const { id, name, images, price, discountedPrice, discount } = product;
 
@@ -30,7 +31,7 @@ function ProductCard({ product }) {
         quantity: 1, // default quantity
       })
     );
-    setIsAddedToCart(true);
+    toast('Item added to cart', {duration: 800})
   };
 
   const handleNavigate = () => navigate(`/product-details/${id}`);
@@ -45,6 +46,7 @@ function ProductCard({ product }) {
       onClick={handleNavigate}
       className="relative w-[200px] min-w-[200px] h-[300px] overflow-hidden group bg-white rounded-lg hover:shadow-lg transition-shadow duration-300 cursor-pointer"
     >
+      <Toaster position="top-center" />
       {/* Product Image Section */}
       <div className="relative bg-gray-100  h-40">
         <img
@@ -89,27 +91,21 @@ function ProductCard({ product }) {
 <button
   id="cartStatus"
   onClick={(e) => handleAddToCart(e)}
-  disabled={isAddedToCart}
-  className={` p-3 flex justify-center items-center font-semibold text-sm rounded-lg shadow-md transition-all duration-300 ${
-    isAddedToCart
-      ? "bg-green-500 text-white cursor-not-allowed"
-      : "bg-cta-button text-white hover:bg-cta-hover hover:shadow-lg"
-  }`}
+  className= "p-3 flex justify-center items-center font-semibold text-sm rounded-lg shadow-md transition-all duration-300 bg-cta-button text-white hover:bg-cta-hover hover:shadow-lg " 
 >
-  {/* {isAddedToCart ? "Added to Cart" : "Add to Cart"} */}
+ 
   <BsCartPlus />
 </button>
   </div>
 
 
-      {/* Product Info Section */}
+     
       <div className="p-3 space-y-2">
-        {/* Product Name */}
         <h2    className={`text-sm font-medium text-nowrap text-gray-800 ${name.length > 30 ? 'group-hover:animate-scrollX' : ''}`} title={name}>
           {name}
         </h2>
 
-        {/* Price Info */}
+       
         <div className="flex items-center space-x-2">
           <span className="text-sm font-bold text-gray-800">
             {currencyFormatter.format(price)}

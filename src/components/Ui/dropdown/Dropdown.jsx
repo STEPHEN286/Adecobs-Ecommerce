@@ -67,7 +67,7 @@ export default function DropdownComponent() {
               
               
               return (
-                <li className=" cursor-pointer ">
+                <li className=" cursor-pointer text-xs ">
                   {/* <Link to={`category/${categoryId}`} >{name}</Link> */}
                   <span
                     onClick={() => navigateToCategory(`category/${categoryId}`)}

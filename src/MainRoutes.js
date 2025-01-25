@@ -6,6 +6,7 @@ import CategoryLayout from "./routes/ProductRootPage";
 import RootLayout from "./routes/RootLayout";
 import PersonalDetails from "./components/user-settings/PersonalDetails.jsx";
 import { createBrowserRouter } from "react-router-dom";
+import SearchResults from "./routes/SearchPage.jsx";
 
 
 
@@ -32,7 +33,17 @@ const router = createBrowserRouter([
         ] 
       }
     ],
+
+    
   },
-]);
+
+
+  {
+    path: "/search",
+    element : <SearchResults />
+  }
+]
+
+);
 
 export default router;

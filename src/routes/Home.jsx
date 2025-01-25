@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <div className="space-y-4 w-full  ">
       <CarouselComponent billboards={billboards} />
-      <div className="sm:px-6 lg:px-8">
+      <div className="flex flex-col gap-4">
         <FeaturedProducts />
         <IndicateContainer />
         {/* <ToolTipComponent /> */}

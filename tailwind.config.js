@@ -6,6 +6,9 @@ module.exports = {
 
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+      },
       keyframes: {
         scrollX: {
           '0%': { transform: 'translateX(0)' },
@@ -32,7 +35,7 @@ module.exports = {
           ctaBorder: "#e76c00", // White
         },
         body: {
-          background: "#FFF8E7", // Soft Cream
+          background: "#f2f3f3", // Soft Cream
           text: "#333333", // Charcoal Gray
         },
         cards: {

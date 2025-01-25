@@ -1,7 +1,7 @@
 import React from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { useNavigate } from "react-router";
-import ColoredIcon from "../icon/ImageToIcon";
+
 
 function Sidebar() {
   const { data: categories } = useFetch("categories");
@@ -12,7 +12,7 @@ function Sidebar() {
   };
 
   return (
-    <div className=" border-r hidden md:block max-h-96 bg-white p-5">
+    <div className=" border-r hidden md:block h-fit max-h-96 rounded-md bg-white p-5">
       <ul className="space-y-3 ">
         {categories?.map((category) => {
           const { id, name, iconUrl } = category;
@@ -20,7 +20,7 @@ function Sidebar() {
             <li key={id}>
               <div
                 onClick={() => navigateToCategory(`category/${id}`)}
-                className=" cursor-pointer flex items-center gap-1"
+                className=" text-xs cursor-pointer flex items-center gap-1"
               >
                 {/* <ColoredIcon dataUrl={iconUrl} /> */}
                 <img src={iconUrl} alt="" />
